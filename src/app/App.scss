@@ -1,6 +1,4 @@
-// CSS Variable
-$header-height: 44px;
-$sidebar-width: 300px;
+@import "../index.scss";
 
 .todo {
   display: grid;
@@ -11,8 +9,8 @@ $sidebar-width: 300px;
   // '& represent this selector
   //&__header would equal to .todo__header
   &__header {
-    grid-row:1/1;
-    grid-column:1/-1
+    grid-row: 1/1;
+    grid-column: 1/-1;
   }
 
   &__sidebar {
@@ -22,12 +20,12 @@ $sidebar-width: 300px;
     // grid-column-end: 2;
 
     // Above's Shorthand
-    grid-row:2/-1;
-    grid-column:1/2
+    grid-row: 2/-1;
+    grid-column: 1/2;
   }
   &__content {
-    grid-row:2/-1;
-    grid-column:2/-1
+    grid-row: 2/-1;
+    grid-column: 2/-1;
   }
-  
 }
+

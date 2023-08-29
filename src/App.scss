@@ -1,0 +1,33 @@
+// CSS Variable
+$header-height: 44px;
+$sidebar-width: 300px;
+
+.todo {
+  display: grid;
+  grid-template-rows: $header-height calc(100vh - $header-height);
+  //grid-template-rows : {firstrow Height} {secondrow Height} .....
+  grid-template-columns: $sidebar-width calc(100vw - $sidebar-width);
+
+  // '& represent this selector
+  //&__header would equal to .todo__header
+  &__header {
+    grid-row:1/1;
+    grid-column:1/-1
+  }
+
+  &__sidebar {
+    // grid-row-start: 2;
+    // grid-row-end: -1;
+    // grid-column-start: 1;
+    // grid-column-end: 2;
+
+    // Above's Shorthand
+    grid-row:2/-1;
+    grid-column:1/2
+  }
+  &__content {
+    grid-row:2/-1;
+    grid-column:2/-1
+  }
+  
+}

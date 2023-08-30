@@ -38,4 +38,29 @@
   height: calc(100vh - $header-height);
 }
 
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 
+  //Modifier
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 4px;
+
+    &__text {
+      font-weight: 500;
+    }
+    &__icon {
+      transition: 1s;
+      cursor: pointer;
+    }
+    &__active {
+      transform: rotate(-90deg);
+    } 
+  }
+}

@@ -2,7 +2,8 @@ import "./App.scss";
 import Header from "../components/Header";
 import Lists from "../components/Lists";
 import TodoHeader from "../components/Todo/TodoHeader";
-
+import TodoCreate from "../components/Todo/TodoCreate";
+import TodoList from "../components/Todo/TodoList";
 import {
   FaInbox,
   FaCalendar,
@@ -51,11 +52,11 @@ function App() {
       <div className="todo__content">
         <main className="todo__container">
           {/* Header */}
-
           <TodoHeader />
-
           {/* Create Todo */}
+          <TodoCreate/>
           {/* TodoLists */}
+          <TodoList/>
         </main>
       </div>
     </div>

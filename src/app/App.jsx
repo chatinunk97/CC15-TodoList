@@ -1,7 +1,8 @@
 import "./App.scss";
 import Header from "../components/Header";
-import ListItem from "../components/ListItem";
 import Lists from "../components/Lists";
+import TodoHeader from "../components/Todo/TodoHeader";
+
 import {
   FaInbox,
   FaCalendar,
@@ -29,9 +30,7 @@ function App() {
       <div className="todo__sidebar">
         <aside className="sidebar">
           <section className="sidebar__category"></section>
-          <ul className="list">
-             {<Lists data = {projectLists}/>}
-          </ul>
+          <ul className="list">{<Lists data={generalLists} />}</ul>
           <div className="accordion">
             {/* Toggle */}
             <div className="accordion__toggle">
@@ -44,12 +43,21 @@ function App() {
             {/* List */}
             <ul className="list">
               <section className="sidebar__category"></section>
-              {<Lists data = {projectLists}/>}
+              {<Lists data={projectLists} />}
             </ul>
           </div>
         </aside>
       </div>
-      <div className="todo__content">TodoContent</div>
+      <div className="todo__content">
+        <main className="todo__container">
+          {/* Header */}
+
+          <TodoHeader />
+
+          {/* Create Todo */}
+          {/* TodoLists */}
+        </main>
+      </div>
     </div>
   );
 }

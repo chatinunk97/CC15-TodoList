@@ -12,6 +12,7 @@ props = {
 }
 */
 const Lists = (props)=>{
+    console.log(props)
     return(
         <>
             {props.data.map((obj)=>{

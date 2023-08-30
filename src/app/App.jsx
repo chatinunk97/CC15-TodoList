@@ -1,6 +1,7 @@
 import "./App.scss";
 import Header from "../components/Header";
 import ListItem from "../components/ListItem";
+import Lists from "../components/Lists";
 import {
   FaInbox,
   FaCalendar,
@@ -9,6 +10,17 @@ import {
 } from "react-icons/fa";
 
 function App() {
+  const generalLists = [
+    { id: 1, text: "Inbox", active: true, icon: <FaInbox /> },
+    { id: 2, text: "Today", active: false, icon: <FaCalendar /> },
+    { id: 3, text: "Next 7 Days", active: false, icon: <FaCalendarAlt /> },
+  ];
+
+  const projectLists = [
+    { id: 1, text: "Project-A", active: false, icon: <FaInbox /> },
+    { id: 2, text: "Project-B", active: true, icon: <FaInbox /> },
+  ];
+
   return (
     <div className="todo">
       <div className="todo__header">
@@ -18,15 +30,8 @@ function App() {
         <aside className="sidebar">
           <section className="sidebar__category"></section>
           <ul className="list">
-            <ListItem text="Inbox" icon={<FaInbox />} active={true} />
-            <ListItem text="Today" icon={<FaCalendar />} active={false} />
-            <ListItem
-              text="Next 7 Days"
-              icon={<FaCalendarAlt />}
-              active={true}
-            />
+             {<Lists data = {projectLists}/>}
           </ul>
-
           <div className="accordion">
             {/* Toggle */}
             <div className="accordion__toggle">
@@ -39,8 +44,7 @@ function App() {
             {/* List */}
             <ul className="list">
               <section className="sidebar__category"></section>
-              <ListItem text="Today" icon={<FaInbox />} active={false} />
-              <ListItem text="Work" icon={<FaInbox />} active={true} />
+              {<Lists data = {projectLists}/>}
             </ul>
           </div>
         </aside>

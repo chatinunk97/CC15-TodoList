@@ -7,8 +7,8 @@ $grey-dark: #808080;
 $white: #fff;
 
 // GLOBAL RESET Styling //
-$header-height: 44px;
-$sidebar-width: 300px;
+$header-height: 60px;
+$sidebar-width: 375px;
 *,
 *::after,
 *::before {
@@ -30,5 +30,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
 }
-
+li{
+  list-style: none;
+}
 //

@@ -1,4 +1,5 @@
 import "./Sidebar.scss";
+import List from "./List";
 import {
   FaInbox,
   FaCalendar,
@@ -6,51 +7,30 @@ import {
   FaChevronDown,
 } from "react-icons/fa";
 
+
+const generalLists = [
+  {id : 1, text : 'Inbox' , icon : <FaInbox/>, active : true ,},
+  {id : 2, text : 'Today', icon : <FaCalendar/>, active : false ,},
+  {id :3 , text : 'Next 7 Days', icon :<FaCalendarAlt/> , active : true ,},
+]
+const projectLists = [
+  {id : 3, text : 'Projects' , icon : <FaChevronDown/>, active : true ,},
+  {id : 4, text : 'Work', icon : <FaInbox/>, active : false ,},
+  {id : 5, text : 'Home', icon : <FaInbox/>, active : false ,},
+
+]
+
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="generalSide">
         <ol>
-          <li className="generalSide__button">
-            <div className="generalSide__logo">
-              <FaInbox />
-            </div>
-            Inbox
-          </li>
-          <li className="generalSide__button">
-            <div className="generalSide__logo">
-              <FaCalendar />
-            </div>
-            Today
-          </li>
-          <li className="generalSide__button">
-            <div className="generalSide__logo">
-              <FaCalendarAlt />
-            </div>
-            Next 7 Days
-          </li>
+          {generalLists.map((obj)=>(<List {...obj} />))}
         </ol>
       </div>
       <div className="projectSide">
         <ol>
-          <li className="projectSide__title">
-            <div className="projectSide__logo">
-              <FaChevronDown />
-            </div>
-            Projects
-          </li>
-          <li className="projectSide__button">
-            <div className="projectSide__logo">
-              <FaInbox />
-            </div>
-            Work
-          </li>
-          <li className="projectSide__button">
-            <div className="projectSide__logo">
-              <FaInbox />
-            </div>
-            Home
-          </li>
+        {projectLists.map((obj)=>(<List {...obj} />))}
         </ol>
       </div>
     </div>

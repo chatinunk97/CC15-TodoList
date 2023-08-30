@@ -1,5 +1,5 @@
 import "./Sidebar.scss";
-import List from "./List";
+import List from "./ListItem";
 import {
   FaInbox,
   FaCalendar,

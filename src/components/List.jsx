@@ -1,14 +1,12 @@
-import './List.scss'
-const List = (props) => {
+import ListItem from "./ListItem"
 
-  return (
-    <li className={`generalSide__button  ${props.active ? "active":""}`}>
-      <div className="generalSide__logo">
-       {props.icon}
-      </div>
-      <p>{props.text}</p>
-    </li>
-  );
-};
+const List = (prop)=>{
+
+    return(
+        <ul>
+          {prop.data.map((obj)=>(<ListItem {...obj} />))}
+        </ul>
+    )
+}
 
 export default List;

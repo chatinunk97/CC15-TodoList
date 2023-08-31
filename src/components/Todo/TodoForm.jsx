@@ -8,6 +8,7 @@ function TodoForm(props) {
 
   const handleChangeInput = (event) => {
     if(isError) setIsError(false);
+    // if(event.target.value) setIsError(false)
     setTaskInput(event.target.value);
     
   };

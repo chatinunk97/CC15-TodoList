@@ -1,22 +1,24 @@
 import styles from './SideBar.module.scss';
 import { FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from 'react-icons/fa';
 import Lists from './Lists';
+import { useState } from 'react';
 
 function SideBar() {
-  const generalLists = [
-    { id: 1, text: 'Inbox', icon: <FaInbox />, active: true },
+
+  const [ generalLists , setGeneralList ] = useState([
+    { id: 1, text: 'Inbox', icon: <FaInbox />, active: false },
     { id: 2, text: 'Today', icon: <FaCalendar />, active: false },
     { id: 3, text: 'Next 7 Days', icon: <FaCalendarAlt />, active: false },
-  ];
+  ])
 
-  const projectLists = [
+  const [projectLists,setProjectLists] = useState([
     { id: 4, text: 'Project-A', icon: <FaInbox />, active: false },
     { id: 5, text: 'Project-B', icon: <FaInbox />, active: false },
-  ];
+  ]);
   return (
     <aside className={styles.sidebar}>
       <section className={styles.sidebar__category}>
-        <Lists data={generalLists} />
+        <Lists data={generalLists} setList = {setGeneralList} />
       </section>
 
       <section className={styles.sidebar__category}>
@@ -30,7 +32,7 @@ function SideBar() {
               <p className={styles.accordion__item__text}>Projects</p>
             </li>
           </div>
-          <Lists data={projectLists} />
+          <Lists data={projectLists} setList = {setProjectLists} />
         </div>
       </section>
     </aside>

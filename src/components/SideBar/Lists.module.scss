@@ -1,1 +1,7 @@
-@import '../styles/global.scss';
+@import '../../styles/global.scss';
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: $grey-800;}

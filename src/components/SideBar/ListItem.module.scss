@@ -31,10 +31,11 @@
       // display: inline;
       font-weight: inherit;
     }
+    &__active {
+      background-color: $grey-200;
+      color: black;
+    }
   }
 }
 
-.active {
-  background-color: $grey-200;
-  color: black;
-}
+

@@ -9,8 +9,6 @@ props = {
 }
 */
 function ListItem(props) {
-  console.log(props); // props = {text: "custom text"}
-
   const listClassName = `${styles.list__item} ${props.active ? 'active' : ''}`;
   // active=false => textClassName = "list__item"
   // active=true => textClassName = "list__item active"

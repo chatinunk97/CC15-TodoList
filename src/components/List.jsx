@@ -3,8 +3,11 @@ import ListItem from "./ListItem"
 const List = (prop)=>{
 
     return(
-        <ul>
+        <ul className="list">
+
           {prop.data.map((obj)=>(<ListItem {...obj} />))}
+
+          
         </ul>
     )
 }

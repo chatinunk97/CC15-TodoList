@@ -4,12 +4,14 @@ import { HiOutlineCheck } from "react-icons/hi";
 import { useState } from "react";
 import TodoForm from "./TodoForm";
 
-function TodoItem({ task, done, date }) {
+function TodoItem({ task, status, due_date }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
 
   const handleClick = (event) => {
     setIsOpenForm(!isOpenForm);
   };
+  const dateObject = new Date(due_date);
+  const options = { day: "numeric", weekday: "short", month: "short" };
   return (
     <>
       {isOpenForm ? (
@@ -18,19 +20,21 @@ function TodoItem({ task, done, date }) {
         <li className={styles.todo}>
           <div
             className={`${styles.todo__checkbox} ${
-              done ? styles.todo__checkbox__done : ""
+              status ? styles.todo__checkbox__done : ""
             } `}
           >
             <HiOutlineCheck className={styles.todo__checkbox__icon} />
           </div>
           <p
             className={`${styles.todo__task} ${
-              done ? styles.todo__task__done : ""
+              status ? styles.todo__task__done : ""
             }`}
           >
             {task}
           </p>
-          <span className={styles.todo__date}>{date}</span>
+          <span className={styles.todo__date}>
+            {dateObject.toLocaleDateString("en-US", options)}
+          </span>
           <div className={styles.todo__action}>
             <span>
               <FaPen className={styles.todo__edit} onClick={handleClick} />

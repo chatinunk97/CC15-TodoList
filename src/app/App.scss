@@ -1,27 +1,16 @@
-@import "../index.scss";
+@import '../styles/global.scss';
 
 .todo {
   display: grid;
   grid-template-rows: $header-height calc(100vh - $header-height);
-  //grid-template-rows : {firstrow Height} {secondrow Height} .....
   grid-template-columns: $sidebar-width calc(100vw - $sidebar-width);
-
-  // '& represent this selector
-  //&__header would equal to .todo__header
   &__header {
-    grid-row: 1/1;
+    grid-row: 1/2;
     grid-column: 1/-1;
   }
-
   &__sidebar {
-    // grid-row-start: 2;
-    // grid-row-end: -1;
-    // grid-column-start: 1;
-    // grid-column-end: 2;
-
-    // Above's Shorthand
     grid-row: 2/-1;
-    grid-column: 1/2;
+    grid-column: 1 / span 1;
   }
   &__content {
     grid-row: 2/-1;
@@ -29,46 +18,9 @@
   }
 }
 
-.sidebar {
-  gap: 10px;
-  padding: 0px 30px;
-  display: flex;
-  flex-direction: column;
-  // background-color: dodgerblue;
-  height: calc(100vh - $header-height);
-  // padding: 20px 30px;
-}
-
-.accordion {
+.todo__container {
   display: flex;
   flex-direction: column;
   gap: 5px;
-
-  //Modifier
-  &__item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 2rem;
-    padding: 10px;
-    border-radius: 4px;
-
-    &__text {
-      font-weight: 500;
-    }
-    &__icon {
-      transition: 1s;
-      cursor: pointer;
-    }
-    &__active {
-      transform: rotate(-90deg);
-    } 
-  }
-}
-
-.todo__container{
-  display: flex;
-  gap: 5px;
-  flex-direction: column;
-  // padding: 20px 30px;
+  padding: 30px;
 }

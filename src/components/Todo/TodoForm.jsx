@@ -1,4 +1,5 @@
 import styles from './TodoForm.module.scss';
+import { Button } from '../Common/Button/Button';
 
 function TodoForm(props) {
   return (
@@ -10,8 +11,8 @@ function TodoForm(props) {
       <div className={styles.todo__form__footer}>
         <p className={styles.todo__error}>Title is required</p>
         <div className={styles.todo__form__buttons}>
-          <button onClick={props.event}>Cancel</button>
-          <button>Add Task</button>
+          <Button text='Cancel'  active = {false} />
+          <Button text = {props.textSubmit}  active = {true} />
         </div>
       </div>
     </form>

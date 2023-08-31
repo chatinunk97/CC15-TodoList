@@ -4,29 +4,24 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 
-
-
 function TodoCreate() {
-  const [isOpenForm , setIsOpenForm] = useState(false);
+  const [isOpenForm, setIsOpenForm] = useState(false);
 
   const handleClick = (event) => {
-   setIsOpenForm(!isOpenForm)
+    setIsOpenForm(!isOpenForm);
   };
-  return (                                                                                                                                       
+  return (
     <>
       {isOpenForm ? (
-        <TodoForm event = {handleClick}  />
-      ):
-      (
-        <div className={styles.todo__create}
-        onClick={handleClick}>
+        <TodoForm textSubmit="Add Task"/>
+      ) : (
+        <div className={styles.todo__create} onClick={handleClick}>
           <div className={styles.todo__create__button}>
             <HiPlus />
           </div>
           <h3 className={styles.todo__create__text}>Add Task</h3>
         </div>
-      ) 
-      }
+      )}
     </>
   );
 }

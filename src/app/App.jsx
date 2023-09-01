@@ -38,20 +38,32 @@ function App() {
       id: nanoid(),
       task: taskName,
       status: false,
-      due_date: dayjs().format('YYYY-MM-DD')
+      due_date: dayjs().format("YYYY-MM-DD"),
     };
     setAllTodos((prevState) => [newTodo, ...prevState]);
   };
 
+  const editTodo = (todoId, newTodoObj) => {
+    setAllTodos((prevState) =>
+      prevState.map((e) => {
+        if (e.id == todoId) {
+          return {...e,...newTodoObj};
+        } else {
+          return e;
+        }
+      })
+    );
+  };
 
-  const deleteTodo = (id)=>{
-
+  const deleteTodo = (todoId) => {
     //Update the Array
-    setAllTodos((prevState)=>{
+    setAllTodos((prevState) => {
       //Below filter the array to not include the ID
-      return prevState.filter((obj)=>{return obj.id !== id})
-    })
-  }
+      return prevState.filter((obj) => {
+        return obj.id !== todoId;
+      });
+    });
+  };
 
   return (
     <div className="todo">
@@ -64,8 +76,12 @@ function App() {
       <div className="todo__content">
         <main className="todo__container">
           <TodoHeader />
-          <TodoCreate data={allTodos}  addTodo={addTodo} />
-          <TodoLists data={allTodos} deleteTodo = {deleteTodo} />
+          <TodoCreate addTodo={addTodo} />
+          <TodoLists
+            data={allTodos}
+            deleteTodo={deleteTodo}
+            editTodo={editTodo}
+          />
         </main>
       </div>
     </div>

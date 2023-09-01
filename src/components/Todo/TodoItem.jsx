@@ -4,11 +4,10 @@ import { HiOutlineCheck } from "react-icons/hi";
 import { useState } from "react";
 import TodoForm from "./TodoForm";
 
-function TodoItem({ id, task, status, due_date, deleteTodo }) {
+function TodoItem({ id, task, status, due_date, deleteTodo, editTodo }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const handleClick = (event) => {
     setIsOpenForm(!isOpenForm);
-    // console.log(task);
   };
   const dateObject = new Date(due_date);
   const options = { day: "numeric", weekday: "short", month: "short" };
@@ -17,10 +16,21 @@ function TodoItem({ id, task, status, due_date, deleteTodo }) {
     deleteTodo(id);
   };
 
+  const toggleStatus = () => {
+    const newTodoObj = { status: !status };
+    console.log(newTodoObj);
+    editTodo(id, newTodoObj);
+  };
+
   return (
     <>
       {isOpenForm ? (
-        <TodoForm textSubmit="Edit" setIsOpenForm={setIsOpenForm} task = {task}/>
+        <TodoForm
+          textSubmit="Edit"
+          setIsOpenForm={setIsOpenForm}
+          editTodo={editTodo}
+          oldTodo = {{id, task, status, due_date}}
+        />
       ) : (
         <li className={styles.todo}>
           <div
@@ -28,7 +38,10 @@ function TodoItem({ id, task, status, due_date, deleteTodo }) {
               status ? styles.todo__checkbox__done : ""
             } `}
           >
-            <HiOutlineCheck className={styles.todo__checkbox__icon} />
+            <HiOutlineCheck
+              className={styles.todo__checkbox__icon}
+              onClick={toggleStatus}
+            />
           </div>
           <p
             className={`${styles.todo__task} ${

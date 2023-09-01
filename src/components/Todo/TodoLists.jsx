@@ -7,7 +7,7 @@ function TodoLists(props) {
   return (
     <ul className={styles.todo__lists}>
       {props.data.map((item) => {
-        return <TodoItem key={item.id} id ={item.id} deleteTodo={props.deleteTodo} {...item} />;
+        return <TodoItem key={item.id} id ={item.id} deleteTodo={props.deleteTodo} editTodo = {props.editTodo} {...item} />;
       })}
     </ul>
   );

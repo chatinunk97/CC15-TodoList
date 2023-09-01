@@ -3,9 +3,9 @@ import { Button } from "../Common/Button/Button";
 import { useState } from "react";
 
 function TodoForm(props) {
-  console.log(props.task)
+
   const [isError, setIsError] = useState(false);
-  const [taskInput, setTaskInput] = useState(props.task);
+  const [taskInput, setTaskInput] = useState(props.oldTodo?.task || '');
 
   const handleChangeInput = (event) => {
     if (isError) setIsError(false);
@@ -21,7 +21,12 @@ function TodoForm(props) {
     }
 
     //Send taskInput to addTodo in App jsx//
-    props.addTodo(taskInput);
+
+    ///IF there's a props.addTodo prop do the following
+    if(props.addTodo) props.addTodo(taskInput);
+    else if(props.editTodo) {
+      props.editTodo(props.oldTodo.id,{task : taskInput})
+    }
     props.setIsOpenForm(false);
   };
 

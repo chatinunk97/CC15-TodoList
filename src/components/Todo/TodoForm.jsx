@@ -2,10 +2,10 @@ import styles from "./TodoForm.module.scss";
 import { Button } from "../Common/Button/Button";
 import { useState } from "react";
 
-
 function TodoForm(props) {
+  console.log(props.task)
   const [isError, setIsError] = useState(false);
-  const [taskInput, setTaskInput] = useState("");
+  const [taskInput, setTaskInput] = useState(props.task);
 
   const handleChangeInput = (event) => {
     if (isError) setIsError(false);
@@ -29,13 +29,14 @@ function TodoForm(props) {
     props.setIsOpenForm(false);
   };
 
+
   return (
     <form className={styles.todo__form__container} onSubmit={handleSubmit}>
       {/*	Body */}
       <input
         onChange={handleChangeInput}
         className={styles.todo__form__input}
-        placeholder="Task Name"
+        placeholder={`${props.task ? "":"Task Name"}`}
         value={taskInput}
       />
 

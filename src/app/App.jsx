@@ -41,8 +41,17 @@ function App() {
       due_date: dayjs().format('YYYY-MM-DD')
     };
     setAllTodos((prevState) => [newTodo, ...prevState]);
-    console.log(taskName);
   };
+
+
+  const deleteTodo = (id)=>{
+
+    //Update the Array
+    setAllTodos((prevState)=>{
+      //Below filter the array to not include the ID
+      return prevState.filter((obj)=>{return obj.id !== id})
+    })
+  }
 
   return (
     <div className="todo">
@@ -55,8 +64,8 @@ function App() {
       <div className="todo__content">
         <main className="todo__container">
           <TodoHeader />
-          <TodoCreate  addTodo={addTodo} />
-          <TodoLists data={allTodos} />
+          <TodoCreate data={allTodos}  addTodo={addTodo} />
+          <TodoLists data={allTodos} deleteTodo = {deleteTodo} />
         </main>
       </div>
     </div>

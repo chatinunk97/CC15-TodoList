@@ -4,17 +4,23 @@ import { HiOutlineCheck } from "react-icons/hi";
 import { useState } from "react";
 import TodoForm from "./TodoForm";
 
-function TodoItem({ id ,  task, status, due_date }) {
+function TodoItem({ id, task, status, due_date, deleteTodo }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const handleClick = (event) => {
     setIsOpenForm(!isOpenForm);
+    // console.log(task);
   };
   const dateObject = new Date(due_date);
   const options = { day: "numeric", weekday: "short", month: "short" };
+
+  const handleDelete = () => {
+    deleteTodo(id);
+  };
+
   return (
     <>
       {isOpenForm ? (
-        <TodoForm textSubmit="Edit" setIsOpenForm={setIsOpenForm} />
+        <TodoForm textSubmit="Edit" setIsOpenForm={setIsOpenForm} task = {task}/>
       ) : (
         <li className={styles.todo}>
           <div
@@ -39,7 +45,10 @@ function TodoItem({ id ,  task, status, due_date }) {
               <FaPen className={styles.todo__edit} onClick={handleClick} />
             </span>
             <span>
-              <FaTrashAlt className={styles.todo__delete} />
+              <FaTrashAlt
+                className={styles.todo__delete}
+                onClick={handleDelete}
+              />
             </span>
           </div>
         </li>

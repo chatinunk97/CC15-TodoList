@@ -1,10 +1,9 @@
 import styles from "./TodoCreate.module.scss";
 import TodoForm from "./TodoForm";
 import { useState } from "react";
-import { FaPlus } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 
-function TodoCreate() {
+function TodoCreate(props) {
   const [isOpenForm, setIsOpenForm] = useState(false);
 
   const handleClick = (event) => {
@@ -14,7 +13,7 @@ function TodoCreate() {
     <>
       {isOpenForm ? (
         <TodoForm textSubmit="Add Task" 
-        setIsOpenForm = {setIsOpenForm}/>
+        setIsOpenForm = {setIsOpenForm} setTodo = {props.setTodo} data={props.data}/>
       ) : (
         <div className={styles.todo__create} onClick={handleClick}>
           <div className={styles.todo__create__button}>

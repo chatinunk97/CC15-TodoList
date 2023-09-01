@@ -1,5 +1,4 @@
 import styles from './TodoCreate.module.scss';
-import { FaPlus } from 'react-icons/fa';
 import { HiPlus } from 'react-icons/hi';
 
 function TodoCreate() {

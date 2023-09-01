@@ -12,14 +12,14 @@ function ListItem(props) {
     });
     //Find the current Component index by using ID
     const foundIndex = newList.findIndex((item) => {
-      return item.id == props.id;
+      return item.id === props.id;
     });
     // Changed the the found component's active to true
     newList[foundIndex].active = true;
 
     //Update the list using setState function
     // Note that we have to have a new List to update 
-    // Editing the old one won't do it cuz it's the same
+    // Editing the old one won't do it cuz it's the same memory address
     props.onClick(newList);
   
   };

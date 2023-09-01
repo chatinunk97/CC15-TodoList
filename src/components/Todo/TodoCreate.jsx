@@ -13,7 +13,7 @@ function TodoCreate(props) {
     <>
       {isOpenForm ? (
         <TodoForm textSubmit="Add Task" 
-        setIsOpenForm = {setIsOpenForm} setTodo = {props.setTodo} data={props.data}/>
+        setIsOpenForm = {setIsOpenForm} addTodo={props.addTodo}/>
       ) : (
         <div className={styles.todo__create} onClick={handleClick}>
           <div className={styles.todo__create__button}>

@@ -6,7 +6,6 @@ import TodoForm from "./TodoForm";
 
 function TodoItem({ id ,  task, status, due_date }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
-  console.log(id)
   const handleClick = (event) => {
     setIsOpenForm(!isOpenForm);
   };

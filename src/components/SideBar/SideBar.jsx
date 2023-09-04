@@ -1,24 +1,64 @@
-import styles from './SideBar.module.scss';
-import { FaInbox, FaCalendar, FaCalendarAlt, FaChevronDown } from 'react-icons/fa';
-import Lists from './Lists';
-import { useState } from 'react';
+import styles from "./SideBar.module.scss";
+import {
+  FaInbox,
+  FaCalendar,
+  FaCalendarAlt,
+  FaChevronDown,
+} from "react-icons/fa";
+import Lists from "./Lists";
+import { useState } from "react";
+import { nanoid } from "nanoid";
 
 function SideBar() {
+  const [allLists, setAllLists] = useState([
+    [
+      { id: nanoid(), text: "Inbox", icon: <FaInbox />, active: false },
+      { id: nanoid(), text: "Today", icon: <FaCalendar />, active: false },
+      {
+        id: nanoid(),
+        text: "Next 7 Days",
+        icon: <FaCalendarAlt />,
+        active: false,
+      },
+    ],
 
-  const [ generalLists , setGeneralList ] = useState([
-    { id: 1, text: 'Inbox', icon: <FaInbox />, active: false },
-    { id: 2, text: 'Today', icon: <FaCalendar />, active: false },
-    { id: 3, text: 'Next 7 Days', icon: <FaCalendarAlt />, active: false },
-  ])
-
-  const [projectLists,setProjectLists] = useState([
-    { id: 4, text: 'Project-A', icon: <FaInbox />, active: false },
-    { id: 5, text: 'Project-B', icon: <FaInbox />, active: false },
+    [
+      { id: nanoid(), text: "Project-A", icon: <FaInbox />, active: false },
+      { id: nanoid(), text: "Project-B", icon: <FaInbox />, active: false },
+    ],
   ]);
+
+  const handleClickMenu = (text,updateObj) => {
+    const foundArrayIndex = allLists.findIndex((item) => {
+      if (
+        item.findIndex((item) => {
+          return item.id === text;
+        }) !== -1
+      ) {
+        return item;
+      }
+    });
+
+    const newSubList = allLists[foundArrayIndex].map((obj) => {
+      if (obj.id == text) {
+        return { ...obj, ...updateObj};
+      } else {
+        return { ...obj, active: false };
+      }
+    });
+    const updateList = [...allLists];
+    updateList[foundArrayIndex]= newSubList;
+    setAllLists(updateList)
+
+  };
   return (
     <aside className={styles.sidebar}>
       <section className={styles.sidebar__category}>
-        <Lists data={generalLists} setList = {setGeneralList} />
+        <Lists
+          data={allLists[0]}
+          handleClickMenu={handleClickMenu}
+          // setList={setGeneralList}
+        />
       </section>
 
       <section className={styles.sidebar__category}>
@@ -32,7 +72,11 @@ function SideBar() {
               <p className={styles.accordion__item__text}>Projects</p>
             </li>
           </div>
-          <Lists data={projectLists} setList = {setProjectLists} />
+          <Lists
+            data={allLists[1]}
+            // setList={setProjectLists}
+            handleClickMenu={handleClickMenu}
+          />
         </div>
       </section>
     </aside>

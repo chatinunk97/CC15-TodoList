@@ -1,7 +1,6 @@
 import ListItem from "./ListItem";
-import './Lists.module.scss'
+import "./Lists.module.scss";
 function Lists(props) {
-
   return (
     <ul className="list">
       {props.data.map((obj) => (
@@ -11,8 +10,9 @@ function Lists(props) {
           text={obj.text}
           icon={obj.icon}
           active={obj.active}
-		  onClick = {props.setList}
-		  list = {props.data}
+          //Click and stay grey-dark
+          handleClickMenu={props.handleClickMenu}
+          list={props.data}
         />
       ))}
     </ul>

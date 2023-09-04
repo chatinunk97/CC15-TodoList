@@ -1,6 +1,9 @@
 import styles from './TodoForm.module.scss';
 
-function TodoForm() {
+function TodoForm({onClick}) {
+
+  
+
   return (
     <form className={styles.todo__form__container}>
       {/*	Body */}
@@ -10,7 +13,7 @@ function TodoForm() {
       <div className={styles.todo__form__footer}>
         <p className={styles.todo__error}>Title is required</p>
         <div className={styles.todo__form__buttons}>
-          <button>Cancel</button>
+          <button onClick={onClick}>Cancel</button>
           <button>Add Task</button>
         </div>
       </div>
